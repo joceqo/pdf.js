@@ -1,0 +1,44 @@
+[
+  {
+    "id": "bd152800-ab6d-11ef-b11e-c1c663749915",
+    "body": "this is the highlight button i want to switch to a toolbar",
+    "file": "web/viewer.html",
+    "line": 245,
+    "author": "jocelinqueau"
+  },
+  {
+    "id": "19d78910-ab6f-11ef-b11e-c1c663749915",
+    "body": "disabled selection when priting\n\nsee https://stackoverflow.com/questions/30097055/what-does-the-mozdisallowselectionprint-attribute-in-pdf-js-do",
+    "file": "web/viewer.html",
+    "line": 22,
+    "author": "jocelinqueau"
+  },
+  {
+    "id": "95caa520-ab6f-11ef-b11e-c1c663749915",
+    "body": "prevents Google’s services (e.g., Google Chrome, Google Search, or Google Translate) from attempting to translate the content of the webpage.\n\n",
+    "file": "web/viewer.html",
+    "line": 26,
+    "author": "jocelinqueau"
+  },
+  {
+    "id": "b34be5f0-ab6f-11ef-b11e-c1c663749915",
+    "body": "this is the translation",
+    "file": "web/viewer.html",
+    "line": 41,
+    "author": "jocelinqueau"
+  },
+  {
+    "id": "cc95fad0-ab71-11ef-b11e-c1c663749915",
+    "body": "add the overlay highlight button",
+    "file": "src/display/editor/toolbar.js",
+    "line": 229,
+    "author": "jocelinqueau"
+  },
+  {
+    "id": "2c1dd9f0-ab72-11ef-b11e-c1c663749915",
+    "body": "TODO: react this class ",
+    "file": "src/display/editor/toolbar.js",
+    "line": 17,
+    "author": "jocelinqueau"
+  }
+]
