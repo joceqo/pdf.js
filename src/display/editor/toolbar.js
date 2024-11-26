@@ -49,6 +49,16 @@ class EditorToolbar {
       signal,
     });
 
+    const actionMenu = document.createElement("div");
+    actionMenu.className = "actionMenu";
+    actionMenu.setAttribute("role", "menu");
+    actionMenu.addEventListener("contextmenu", noContextMenu, { signal });
+    actionMenu.addEventListener("pointerdown", EditorToolbar.#pointerDown, {
+      signal,
+    });
+
+    actionMenu.innerHTML = `actionMenu`;
+
     const buttons = (this.#buttons = document.createElement("div"));
     buttons.className = "buttons";
     editToolbar.append(buttons);
@@ -62,6 +72,11 @@ class EditorToolbar {
           : position[0];
       style.insetInlineEnd = `${100 * x}%`;
       style.top = `calc(${
+        100 * position[1]
+      }% + var(--editor-toolbar-vert-offset))`;
+
+      actionMenu.style.position = "absolute";
+      actionMenu.style.top = `calc(${
         100 * position[1]
       }% + var(--editor-toolbar-vert-offset))`;
     }
@@ -233,8 +248,9 @@ class HighlightToolbar {
     button.tabIndex = 0;
     button.setAttribute("data-l10n-id", `pdfjs-highlight-floating-button1`);
     const span = document.createElement("span");
+    span.innerHTML = "Highlight";
+    span.className = "foobar";
     button.append(span);
-    span.className = "visuallyHidden";
     span.setAttribute("data-l10n-id", "pdfjs-highlight-floating-button-label");
     const signal = this.#uiManager._signal;
     button.addEventListener("contextmenu", noContextMenu, { signal });

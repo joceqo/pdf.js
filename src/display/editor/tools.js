@@ -33,6 +33,7 @@ import {
   getRGB,
   PixelsPerInch,
 } from "../display_utils.js";
+import { ActionMenu } from "./action_menu.js";
 import { HighlightToolbar } from "./toolbar.js";
 
 function bindEvents(obj, element, names) {
@@ -623,6 +624,8 @@ class AnnotationEditorUIManager {
 
   #highlightToolbar = null;
 
+  #actionMenu = null;
+
   #idManager = new IdManager();
 
   #isEnabled = false;
@@ -1113,6 +1116,21 @@ class AnnotationEditorUIManager {
     this.#highlightToolbar.show(textLayer, boxes, this.direction === "ltr");
   }
 
+  #displayActionMenu(){
+    const selection = document.getSelection();
+    if (!selection || selection.isCollapsed) {
+      return;
+    }
+    const anchorElement = this.#getAnchorElementForSelection(selection);
+    const textLayer = anchorElement.closest(".textLayer");
+    const boxes = this.getSelectionBoxes(textLayer);
+    if (!boxes) {
+      return;
+    }
+    this.#actionMenu ||= new ActionMenu(this);
+    this.#actionMenu.show(textLayer, boxes, this.direction === "ltr");
+  }
+
   /**
    * Add an editor in the annotation storage.
    * @param {AnnotationEditor} editor
@@ -1206,6 +1224,7 @@ class AnnotationEditorUIManager {
       this.highlightSelection(methodOfCreation);
     } else if (this.#enableHighlightFloatingButton) {
       this.#displayHighlightToolbar();
+      this.#displayActionMenu();
     }
   }
 

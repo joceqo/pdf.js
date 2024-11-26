@@ -1753,3 +1753,28 @@ dialog :link {
     display: none;
   }
 }
+
+
+.foobar{
+  background-color: red !important;
+  position: static !important;
+  width: 100% !important;
+  color: white !important;
+  white-space: normal !important;
+}
+
+
+.actionMenu{
+  position: absolute;
+  background-color: red;
+  min-width: 20px;
+  min-height: 20px;
+  height: min-content;
+  color: white !important;
+  font-size: 12px;
+  display: flex;
+}
+
+.actionMenu > span {
+  color: white !important;
+}

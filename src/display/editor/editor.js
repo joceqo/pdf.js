@@ -23,6 +23,7 @@ import {
   KeyboardManager,
 } from "./tools.js";
 import { FeatureTest, shadow, unreachable } from "../../shared/util.js";
+import { ActionMenu } from "./action_menu.js";
 import { AltText } from "./alt_text.js";
 import { EditorToolbar } from "./toolbar.js";
 import { noContextMenu } from "../display_utils.js";
@@ -77,6 +78,8 @@ class AnnotationEditor {
   #prevDragY = 0;
 
   #telemetryTimeouts = null;
+
+  _actionMenu = null;
 
   _editToolbar = null;
 
@@ -973,16 +976,10 @@ class AnnotationEditor {
    * @returns {Promise<EditorToolbar|null>}
    */
   async addEditToolbar() {
-    if (this._editToolbar || this.#isInEditMode) {
-      return this._editToolbar;
-    }
-    this._editToolbar = new EditorToolbar(this);
-    this.div.append(this._editToolbar.render());
-    if (this.#altText) {
-      await this._editToolbar.addAltText(this.#altText);
-    }
+    this._actionMenu = new ActionMenu(this);
+    this.div.append(this._actionMenu.render());
 
-    return this._editToolbar;
+    return this._actionMenu;
   }
 
   removeEditToolbar() {
